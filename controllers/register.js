@@ -12,11 +12,11 @@ const handleRegister = (knex,bcrypt,req,res)=>{
             hash: hash,
             email: email
         })
-        .into('login')
+        .into('reactlogin')
         .returning('email')
         .then(loginEmail =>{
             //Insert into database
-            return trx('users')
+            return trx('reactusers')
             .returning('*')
             .insert({
                 email: loginEmail[0].email,
